@@ -68,6 +68,8 @@ class Course:
         last_row_sql = 'SELECT * FROM courses ORDER BY id DESC LIMIT 1'
         last_row_tuple = CURSOR.execute(last_row_sql).fetchone()
 
+        # import ipdb; ipdb.set_trace()
+
         self.id = last_row_tuple[0]
 
     # updates the row based on current attributes 
@@ -99,16 +101,16 @@ class Course:
 
     # --- JOIN METHODS --- #
 
-    # return a list of instances of each student
-    def students(self):
-        sql='''SELECT * FROM students WHERE course_id = ?'''
+    # # return a list of instances of each student
+    # def students(self):
+    #     sql='''SELECT * FROM students WHERE course_id = ?'''
 
-        student_tuples = CURSOR.execute(sql, [self.id]).fetchall()
+    #     student_tuples = CURSOR.execute(sql, [self.id]).fetchall()
 
-        return [ 
-            Student(id=student_tuple[0], name=student_tuple[1], grade=student_tuple[2], course_id=student_tuple[3]) 
-            for student_tuple in student_tuples
-            ]
+    #     return [ 
+    #         Student(id=student_tuple[0], name=student_tuple[1], grade=student_tuple[2], course_id=student_tuple[3]) 
+    #         for student_tuple in student_tuples
+            # ]
 
 ############## END COURSE ##############
 
